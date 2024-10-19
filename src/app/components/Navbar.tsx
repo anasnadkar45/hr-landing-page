@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Logo from "../public/Logo.svg";
+import Logo from "../public/Logo.png";
 import Link from "next/link";
 
 export const Navbar = () => {
