@@ -52,7 +52,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="">
+    <section id="faq">
       <div className="container mx-auto">
         <motion.div
           initial={{ filter: "blur(12px)", opacity: 0, y: 24 }}

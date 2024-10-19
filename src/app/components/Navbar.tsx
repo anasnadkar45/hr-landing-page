@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Logo from "../public/Logo.svg";
 import Link from "next/link";
-import { ModeToggle } from "./ModeToggle";
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +21,19 @@ export const Navbar = () => {
 
     useEffect(() => {
         setIsMounted(true);
+        // Add smooth scrolling behavior to the document
+        document.documentElement.style.scrollBehavior = 'smooth';
     }, []);
+
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        const href = e.currentTarget.href;
+        const targetId = href.replace(/.*\#/, "");
+        const elem = document.getElementById(targetId);
+        elem?.scrollIntoView({
+            behavior: "smooth"
+        });
+    };
 
     if (!isMounted) {
         return null;
@@ -30,7 +41,7 @@ export const Navbar = () => {
 
     return (
         <motion.nav
-            className={`fixed top-2 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
+            className={`fixed top-2 -left-2 -right-2 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
                 }`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -49,74 +60,58 @@ export const Navbar = () => {
                             </Link>
                         </motion.div>
                         <div className="hidden md:flex space-x-5">
-                            <a href="#home" className="text-base font-medium hover:text-primary">
+                            <a href="#home" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
                                 Home
                             </a>
-                            <a href="#service" className="text-base font-medium hover:text-primary">
+                            <a href="#about" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                About Us
+                            </a>
+                            <a href="#services" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
                                 Services
                             </a>
-                            <a href="#pricing" className="text-base font-medium hover:text-primary">
-                                Pricing
-                            </a>
-                            <a href="#projects" className="text-base font-medium hover:text-primary">
-                                Projects
-                            </a>
-                            <a href="#contact" className="text-base font-medium hover:text-primary">
-                                Contact
+                            <a href="#faq" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                Faqs
                             </a>
                         </div>
-                        <div className="flex items-center gap-4">
-                            <ModeToggle />
-                            <Link href={"https://cal.com/anas-nadkar-45/30min"} className="hidden md:block">
-                                <Button className="whitespace-nowrap" variant="default">
-                                    Grow My Business
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className="md:hidden">
-                            <Sheet>
-                                <SheetTrigger asChild>
-                                    <Button variant="outline" size="icon">
-                                        <Menu className="h-6 w-6" />
-                                        <span className="sr-only">Open menu</span>
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent side="right">
-                                    <nav className="flex flex-col gap-4">
-                                        <a href="#home" className="text-base font-medium hover:text-primary">
-                                            Home
-                                        </a>
-                                        <a href="#service" className="text-base font-medium hover:text-primary">
-                                            Services
-                                        </a>
-                                        <a href="#pricing" className="text-base font-medium hover:text-primary">
-                                            Pricing
-                                        </a>
-                                        <a href="#projects" className="text-base font-medium hover:text-primary">
-                                            Projects
-                                        </a>
-                                        <a href="#contact" className="text-base font-medium hover:text-primary">
-                                            Contact
-                                        </a>
-                                        <Link href={"https://cal.com/anas-nadkar-45/30min"} >
+                        <div className="flex items-center gap-2">
+                            <Button className="whitespace-nowrap hidden md:block" variant="default">
+                                Get Started for Free
+                            </Button>
+                            <div className="md:hidden">
+                                <Sheet>
+                                    <SheetTrigger asChild>
+                                        <Button variant="outline" size="icon">
+                                            <Menu className="h-6 w-6" />
+                                            <span className="sr-only">Open menu</span>
+                                        </Button>
+                                    </SheetTrigger>
+                                    <SheetContent side="right">
+                                        <nav className="flex flex-col gap-4">
+                                            <a href="#home" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                                Home
+                                            </a>
+                                            <a href="#about" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                                About Us
+                                            </a>
+                                            <a href="#services" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                                Services
+                                            </a>
+                                            <a href="#faq" className="text-base font-medium hover:text-primary" onClick={handleScroll}>
+                                                Faqs
+                                            </a>
                                             <Button className="whitespace-nowrap" variant="default">
-                                                Grow My Business
+                                                Get Started for Free
                                             </Button>
-                                        </Link>
-                                    </nav>
-                                </SheetContent>
-                            </Sheet>
+                                        </nav>
+                                    </SheetContent>
+                                </Sheet>
+                            </div>
                         </div>
                     </div>
-                    {/* Inner shadow effect using the primary color */}
-                    {/* <div className="absolute inset-0 shadow-[inset_0_0_30px_hsl(var(--primary)_/_0.3)] dark:shadow-[inset_0_0_30px_hsl(var(--primary)_/_0.3)] rounded-md z-10 pointer-events-none" /> */}
-
-                    {/* Hover effect */}
                     <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary))] to-[hsl(var(--primary))] opacity-0 transition-opacity duration-300 rounded-md z-5 pointer-events-none"
                         whileHover={{ opacity: 0.2 }}
                     />
-
                 </div>
             </div>
         </motion.nav>

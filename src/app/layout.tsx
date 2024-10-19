@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "./components/theme-provider";
+import { Titillium_Web, Amaranth } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { cn } from "@/lib/utils";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const titillium_Web = Titillium_Web({ weight: "400", subsets: ["latin"] });
+export const amaranth = Amaranth({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,24 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(titillium_Web.className)}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="relative max-w-7xl mx-auto px-2 py-2 sm:px-4 lg:px-6">
-            {/* Navbar */}
-            <Navbar />
-            {/* Page Content */}
-            <main className="pt-16">
-              {children}
-            </main>
-          </div>
-          <Footer />
-        </ThemeProvider>
+        <div className="relative max-w-7xl mx-auto px-2 py-2 md:px-6">
+          {/* Navbar */}
+          <Navbar />
+          {/* Page Content */}
+          <main className="pt-16">
+            {children}
+          </main>
+        </div>
+        <Footer />
       </body>
     </html>
   );

@@ -64,7 +64,7 @@ export function ModernAnimatedButtonVariant1() {
         `}
       </style>
       <button
-        className="rotation-animation conic-gradient transform-gpu cursor-pointer rounded-full p-px shadow-[0_0_20px_0_rgba(245,48,107,0.1)] transition-all hover:bg-primary hover:shadow-[0_0_20px_3px_rgba(245,49,108,.2)] hue-rotate-0 invert-0"
+        className="rotation-animation conic-gradient transform-gpu cursor-pointer rounded-full p-px shadow-[0_0_20px_0_rgba(245,48,107,0.1)] transition-all hover:bg-primary hover:shadow-primary/50 hue-rotate-0 invert-0"
         style={{
           background:
             "conic-gradient(from calc(var(--r2) - 80deg) at var(--x) 15px, transparent 0, hsl(var(--accent)) 20%, transparent 25%), hsl(var(--background))",

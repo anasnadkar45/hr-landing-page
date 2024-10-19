@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Image from 'next/image'
 import HeroImg from '../public/Hero.png'
 import { ModernAnimatedButtonVariant1 } from "./ModernAnimatedButtonVariant1";
-import Money from '../public/flying-money.png'
+import { BorderBeam } from "@/components/ui/border-beam";
 
 
 export const Home = () => {
     return (
-        <div className='relative min-h-fit py-12 sm:pt-20 w-full overflow-hidden bg-background '>
+        <div id="home" className='relative min-h-fit py-12 sm:pt-20 w-full overflow-hidden bg-background '>
             <div
                 className="absolute inset-0 z-0"
                 style={{
@@ -58,12 +58,13 @@ export const Home = () => {
                 </p>
             </motion.div>
             <motion.div
-                className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full relative z-10"
+                className="w-full object-cover lg:w-full h-full relative z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <Image src={HeroImg} alt='Hero Image' width={1000} className=' rounded-2xl mx-auto' />
+                <Image src={HeroImg} alt='Hero Image' className='w-full rounded-2xl mx-auto' />
+                <BorderBeam size={250} duration={6} delay={5} className="rounded-2xl"/>
             </motion.div>
         </div>
     )
