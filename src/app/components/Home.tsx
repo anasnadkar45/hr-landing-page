@@ -7,7 +7,6 @@ import HeroImg from '../public/Hero.png'
 import { ModernAnimatedButtonVariant1 } from "./ModernAnimatedButtonVariant1";
 import { BorderBeam } from "@/components/ui/border-beam";
 
-
 export const Home = () => {
     return (
         <div id="home" className='relative min-h-fit py-12 sm:pt-20 w-full overflow-hidden bg-background '>
@@ -50,11 +49,11 @@ export const Home = () => {
             >
                 <ModernAnimatedButtonVariant1 />
                 <div className="text-3xl md:text-6xl font-bold mb-4">
-                    <h1 className="text-gradient">Simplefy Payroll</h1>
-                    <span>Empower Your Workforce</span>
+                    <h1 className="text-gradient">Transform Your HR</h1>
+                    <span>Empower Your People</span>
                 </div>
-                <p className="text-muted-foreground max-w-[500px] mx-auto">
-                    Manage payroll for full-time and contract employees seamlessly with our intutive HR dashboard.
+                <p className="text-muted-foreground max-w-[600px] mx-auto">
+                    Streamline your HR processes, boost employee engagement, and drive organizational success with our comprehensive HR management platform.
                 </p>
             </motion.div>
             <motion.div
@@ -63,8 +62,8 @@ export const Home = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <Image src={HeroImg} alt='Hero Image' className='w-full rounded-2xl mx-auto' />
-                <BorderBeam size={250} duration={6} delay={5} className="rounded-2xl"/>
+                <Image src={HeroImg} alt='HR Dashboard' className='w-full rounded-2xl mx-auto' />
+                <BorderBeam size={250} duration={6} delay={5} className="rounded-2xl" />
             </motion.div>
         </div>
     )
